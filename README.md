@@ -19,6 +19,6 @@ run:
 ```
 sudo pacman -S kitty rofi waybar btop discord zsh swaybg
 git clone https://github.com/sophin-2010/lofiland-hyprland.git ~/.config
-mv ~/.config/.zshrc ~/
+mv ~/.config/.zshrc ~/.zhhrc
 chsh -s /usr/bin/zsh
 ```
