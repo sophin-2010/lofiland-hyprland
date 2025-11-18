@@ -1,0 +1,45 @@
+ISYAY=/sbin/yay
+
+if [ -f "$ISYAY" ]; then 
+    echo -e "yay was located, moving on.\n"
+else 
+    echo -e "yay was not located, please install yay. Exiting script.\n"
+    exit 
+fi
+
+
+
+read -n1 -rep 'Would you like to install the packages? (y,n)' INST
+if [[ $INST == "Y" || $INST == "y" ]]; then
+    yay -S --noconfirm hyprland kitty waybar-hyprland \
+    swaybg rofi catnap ttf-jetbrains-mono-nerd starship \
+    grim 
+fi
+
+read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
+if [[ $CFG == "Y" || $CFG == "y" ]]; then
+    echo -e "Copying config files...\n"
+    cp -R dotfiles/hypr ~/.config
+    cp -R dotfiles/kitty ~/.config
+    cp -R dotfiles/waybar ~/.config
+    cp -R dotfiles/rofi ~/.config
+    cp -R dotfiles/backgrounds ~/.config
+
+    chmod +x ~/.config/hypr/wallpapers
+
+
+    cp dotfiles/.starship.toml ~/.config/
+	rm ~/.bashrc
+	echo -e '\ncatnap"' >> ~/.bashrc    
+	echo -e '\neval"$(starship init bash)"' >> ~/.bashrc
+fi
+
+
+
+echo -e "Succes <3\n"
+read -n1 -rep 'Reboot system? >3 (y,n)' HYP
+if [[ $HYP == "Y" || $HYP == "y" ]]; then
+    reboot
+else
+    exit
+fi
