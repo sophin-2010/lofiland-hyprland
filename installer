@@ -37,9 +37,8 @@ fi
 
 
 echo -e "Succes <3\n"
-read -n1 -rep 'Reboot system? >3 (y,n)' HYP
-if [[ $HYP == "Y" || $HYP == "y" ]]; then
-    reboot
-else
-    exit
-fi
+sleep(1)
+echo -e "Removing \ \n\n"
+sleep(2)
+sudo reboot now
+
