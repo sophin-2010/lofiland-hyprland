@@ -7,7 +7,7 @@ else
     exit 
 fi
 
-
+sleep 3
 
 read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
@@ -15,6 +15,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     swaybg rofi catnap ttf-jetbrains-mono-nerd starship \
     grim 
 fi
+sleep 1
 
 read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
@@ -35,11 +36,11 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
 	chsh -s /usr/bin/zsh
 fi
 
-
+sleep 1
 
 echo -e "Succes <3\n"
-sleep(1)
-echo -e "Removing \ \n\n"
-sleep(2)
+sleep 1
+echo -e "Removing System \n\n"
+sleep 2
 sudo reboot now
 
