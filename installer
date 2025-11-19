@@ -12,7 +12,7 @@ sleep 3
 read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm hyprland kitty waybar-hyprland \
-    swaybg rofi catnap ttf-jetbrains-mono-nerd starship \
+    swaybg rofi catnap ttf-jetbrains-mono-nerd \
     grim librewolf discord
 fi
 sleep 1
