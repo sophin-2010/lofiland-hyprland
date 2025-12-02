@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Wallpaper directory
+WP_FOLDER=~/.config/backgrounds
+
+# Time in seconds to change wallpaper
+
+    PID=$(pidof swaybg)
+    FILE=$(find "$WP_FOLDER" -type f -name '*.png' -o -name '*.jpg' | shuf -n1)
+    
+    cp -R "$FILE" ~/.config/hypr/wallpaper.png
+    swaybg -i ~/.config/hypr/wallpaper.png -m fill &
+    sleep 1
+    kill "$PID"
+

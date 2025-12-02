@@ -1,0 +1,38 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](#f42e4c)\
+$os\
+$username\
+[](bg:#f42e4c fg:#f42e4c)\
+$directory\
+[](bg:#f9962c fg:#f42e4c)\
+[$time](fg:#f9962c)\
+[](fg:#f9962c)\
+\n$character"""
+
+
+
+
+
+
+[directory]
+style = "bg:#f42e4c fg:#63f2f9"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = "󰈙 "
+"~"= "  ~"
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+format = '[[  $time ](fg:#FFFFFF bg:#f9962c)]($style)'
