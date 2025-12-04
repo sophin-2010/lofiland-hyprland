@@ -1,0 +1,98 @@
+ISYAY=/sbin/yay
+
+if [ -f "$ISYAY" ]; then 
+    continue
+else 
+    echo -e "yay was not located, please install yay. Exiting script.\n"
+    exit 
+fi
+
+read -n1 -rep 'Install dependences? >3 (y,n)' INS
+if [[ $INS == "Y" || $HYP == "y" ]]; then
+
+    yay -S --noconfirm hyprland kitty waybar-hyprland \
+        swaybg wofi catnap ttf-jetbrains-mono-nerd \
+        grim discord fish starship flatpak
+
+    flatpak install flathub io.gitlab.librewolf-community
+
+    echo -e "Installed UwU"
+fi
+
+sleep 0.5
+echo -e "Copying config files...\n"
+sleep 1
+
+    echo -e "Removing old hyprland file\n"
+    sleep 0.25
+    mkdir ~/.config
+
+    echo -e "Copying hyprland file\n"
+    sleep 0.25
+    cp -R dotfiles/hypr ~/.config
+
+    echo -e "Copying kitty file\n"
+    sleep 0.25
+    cp -R dotfiles/kitty ~/.config
+
+    echo -e "Copying waybar file\n"
+    sleep 0.25
+    cp -R dotfiles/waybar ~/.config
+
+    echo -e "Copying rofi file\n"
+    sleep 0.25
+    cp -R dotfiles/rofi ~/.config
+
+    echo -e "Copying wallpaper folder\n"
+    sleep 0.25
+    cp -R dotfiles/backgrounds ~/.config
+
+    echo -e "Enabling wallpaper changer...\n"
+    sleep 0.25
+    chmod +x ~/.config/hypr/wallpapers
+
+echo -e "UwU frufru (succeful)\n"
+sleep 0.25
+
+
+read -n1 -rep 'Change shell to starship? >3 (y,n)' ZSH
+if [[ $ZSH == "Y" || $ZSH == "y" ]]; then
+    cp -R dotfiles/starship.toml ~/.config/
+    cp -R dotfiles/fish ~/.config/
+    chsh -s /usr/bin/fish
+fi
+
+sleep 1
+echo -e "Config's installed :3\n"
+
+read -n1 -rep 'Auto run discord on boot? (y,n)' DIS
+if [[ $DIS == "Y" || $DIS == "y" ]]; then
+	echo -e "exec= discord\n" >> ~/.config/hypr/userprefs.conf
+
+	echo -e "Auto discord was set to true."
+
+else
+	echo -e "Auto discord was set to false."
+fi
+
+sleep 1
+
+read -n1 -rep 'Enable blur? (y,n)' CFG
+if [[ $CFG == "Y" || $CFG == "y" ]]; then
+    echo -e "Copying config files...\n"
+
+	echo -e "decoration {\nblur {\n	enabled = yes\n	size = 6\n	passes = 3\n	new_optimizations = on\n	ignore_opacity = on\n	xray = false\n	}\n	}" >> ~/.config/hypr/userprefs.conf
+
+    chmod +x ~/.config/hypr/wallpapers
+
+	echo -e "Auto discord was set to true."
+else
+    echo -e "decoration {\nblur {\n	  enabled = false\n  }\n}" >> ~/.config/hypr/userprefs.conf
+fi
+
+echo -e "Failed to load dotfiles...\n"
+sleep 0.15
+echo -e "Linux Kernel has been corrupted... Trying to fix...\n"
+sleep 1
+reboot
+echo -e "Fatal error: Kernel not found"

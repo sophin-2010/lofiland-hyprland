@@ -1,0 +1,66 @@
+{
+
+	"position": "top",
+	"modules-center": ["hyprland/workspaces"],
+	"modules-left": ["network"],
+	"modules-right": ["pulseaudio", "cpu", "clock"],
+	"height": 30,
+
+	"margin-top": 4,
+  	"margin-left": 4,
+  	"margin-right": 4,
+  	"margin-bottom": 0,
+
+	
+	"hyprland/workspaces": 
+	{
+    		"format": "{icon}",
+   		"format-icons": {
+     		"active": "",
+     		"default": "",
+     		"persistent": ""}
+	},
+
+	"network": {
+	
+	"format-wifi" : "{icon}",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "format-ethernet": "󰀂",
+        "format-disconnected" : "󰖪",
+	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+	"tooltip-format-disconnected": "Disconnected",
+	"interval": 5,
+	"nospacing": 1
+	},
+
+
+	"pulseaudio": {
+	
+		"format": "  {volume}%"	
+
+	},
+
+	"custom/separator": {
+    		"format": "  ",
+    		"interval": "once",
+    		"tooltip": false
+	},
+
+	"clock": 
+	{
+	
+		"tooltip": true,
+		"format": "  {0:%H:%M}",
+		"tooltip-format": "Today: {0:%d/%m}"	
+	},
+
+
+	"cpu": {
+	
+		"format": "󱐋 {}%",
+		"interval": 1
+	}
+
+
+}
